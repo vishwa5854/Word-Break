@@ -16,7 +16,7 @@ public class Main {
         int start = 0;
         int stop = dictionary.size();
         ArrayList<String> space = new ArrayList<>(dictionary);
-        for(int i=0;i<3;i++) {
+        for(int i=0;i<number_of_words_in_dictionary;i++) {
             generateTwoAtATime(start,stop,dictionary,number_of_words_in_dictionary,space);
             start = stop;
             stop = dictionary.size();
