@@ -7,12 +7,27 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner =new Scanner(System.in);
-        String input = scanner.nextLine();
+        int numberOfTestCases = scanner.nextInt();
+        ArrayList<String> output = new ArrayList<>();
+        for(int i=0;i<numberOfTestCases;i++) {
+            process(scanner, output);
+        }
+        display(output);
+    }
+
+    private static void display(ArrayList<String> output) {
+        for(String a : output){
+            System.out.println(a);
+        }
+    }
+
+    private static void process(Scanner scanner, ArrayList<String> output) {
         int number_of_words_in_dictionary = scanner.nextInt();
         ArrayList<String> dictionary = new ArrayList<>();
         for(int i=0;i<number_of_words_in_dictionary;i++){
             dictionary.add(scanner.next());
         }
+        String input = scanner.next();
         int start = 0;
         int stop = dictionary.size();
         ArrayList<String> space = new ArrayList<>(dictionary);
@@ -21,14 +36,13 @@ public class Main {
             start = stop;
             stop = dictionary.size();
         }
-
-        searchForAnswer(input, dictionary, space);
+        searchForAnswer(input, dictionary, space, output);
     }
 
-    private static void searchForAnswer(String input, ArrayList<String> dictionary, ArrayList<String> space) {
+    private static void searchForAnswer(String input, ArrayList<String> dictionary, ArrayList<String> space,ArrayList<String> output) {
         for(int i=0;i<dictionary.size();i++){
             if(dictionary.get(i).compareTo(input) == 0){
-                System.out.println(space.get(i));
+                output.add(space.get(i));
                 dictionary.remove(i);
                 space.remove(i);
             }
